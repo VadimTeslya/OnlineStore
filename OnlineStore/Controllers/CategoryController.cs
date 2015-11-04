@@ -44,7 +44,7 @@ namespace OnlineStore.Controllers
         {
             if (createError.GetValueOrDefault())
             {
-                ViewBag.ErrorMessage = "Возникла ошибка. Возможно категория с таким наименованием уже существует.";
+                ViewBag.ErrorMessage = "Error.";
             }
 
             return View();
@@ -56,24 +56,19 @@ namespace OnlineStore.Controllers
         [HttpPost]
         public ActionResult Create(Category model)
         {
-            try 
-            { 
-                if (_categoryService.GetAll().Count(c => c.Name == model.Name) > 0)
-                    return RedirectToAction("Create",
-                     new RouteValueDictionary {  
-                        { "id", null},  
-                        { "createError", true } });
+            if (_categoryService.GetAll().Count(c => c.Name == model.Name) > 0)
+                return RedirectToAction("Create",
+                        new RouteValueDictionary {  
+                            { "id", null},  
+                            { "createError", true } });
 
-                if (ModelState.IsValid)
-                    _categoryService.Insert(model);
+            if (ModelState.IsValid)
+            {
+                _categoryService.Insert(model);
 
                 return RedirectToAction("Index");
             }
-            catch(Exception)
-            {
-                ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists see your system administrator.");
-            }
-
+                    
             return View(model);
         }
 
