@@ -21,6 +21,7 @@ namespace OnlineStore.Controllers
 
         public ActionResult Index()
         {
+            var a = 2;
             var cagetoryList = _categoryService.GetAll().ToList();
 
             return View(cagetoryList);
