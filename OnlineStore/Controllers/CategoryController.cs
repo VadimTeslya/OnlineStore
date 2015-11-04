@@ -13,6 +13,7 @@ namespace OnlineStore.Controllers
 
         public CategoryController(IRepository<Category> categoryService)
         {
+            var b = 3;
             _categoryService = categoryService;
         }
 
