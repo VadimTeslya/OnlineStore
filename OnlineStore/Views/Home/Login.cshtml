@@ -1,0 +1,29 @@
+﻿@model OnlineStoreEntity.Employee
+
+@{
+    ViewBag.Title = "Login";
+}
+
+<h2>Login</h2>
+<div>
+    @using (Html.BeginForm())
+    {
+        @Html.ValidationSummary(true)
+        <fieldset>
+            <legend>Login</legend>
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.Name)
+                @Html.EditorFor(model => model.Name)
+            </div>
+            <div class="editor-field">
+                @Html.LabelFor(model => model.SecondName, "Second name")
+                @Html.EditorFor(model => model.SecondName)
+            </div>
+
+            <p>
+                <input type="submit" value="Log in" />
+            </p>
+        </fieldset>
+    }
+</div>
