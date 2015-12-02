@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using OnlineStoreData;
-using OnlineStoreEntity;
+﻿using System.Web.Mvc;
 
 namespace OnlineStore.Controllers
 {
@@ -12,34 +6,7 @@ namespace OnlineStore.Controllers
     {
         public ActionResult Index()
         {
-            ViewBag.Message = "Modify this template to jump-start your ASP.NET MVC application.";
-
-            return View();
-        }
-
-        public ActionResult Login()
-        {
-            return View();
-        }
-
-        [HttpPost]
-        public ActionResult Login(Employee model)
-        {
-            /*var employeeList = _employeeService.GetAll().ToList();*/
-
-            return View();
-        }
-
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your app description page.";
-
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
+            ViewBag.Message = "Hello in BACKOFFICE";
 
             return View();
         }
