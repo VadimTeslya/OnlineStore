@@ -1,0 +1,21 @@
+﻿@model OnlineStoreEntity.Order
+
+@{
+    ViewBag.Title = "Checkout";
+}
+
+<h2>Checkout</h2>
+Please enter your details, and we'll ship your goods right away!
+@using (Html.BeginForm())
+{
+    <h3>Ship to</h3>
+    <div>Name: @Html.EditorFor(x => x.CustomerName)</div>
+    <h3>Address</h3>
+    <div>Address : @Html.EditorFor(x => x.DeliveryAddress)</div>
+    <h3>Please enter your phone number</h3>
+    <div>Phone number : @Html.EditorFor(x => x.PhoneNumber)</div>
+
+    <p align="center">
+        <input class="actionButtons" type="submit" value="Complete order" />
+    </p>
+}
