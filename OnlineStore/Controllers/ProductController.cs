@@ -1,5 +1,7 @@
-﻿using System.Linq;
+﻿using System.Data.Entity;
+using System.Linq;
 using System.Web.Mvc;
+using OnlineStore.Models;
 using OnlineStoreData;
 using OnlineStoreEntity;
 
@@ -10,17 +12,37 @@ namespace OnlineStore.Controllers
         private IRepository<Product> _productService;
         private IRepository<Category> _categoryService;
 
+        public int PageSize = 6;
+
         public ProductController(IRepository<Product> productService, IRepository<Category> categoryService)
         {
             _productService = productService;
             _categoryService = categoryService;
         }
 
-        public ActionResult Index()
+        public ActionResult Index(string category, int page = 1)
         {
-            var products = _productService.GetAll().ToList();
-
-            return View(products);
+            var model = new ProductListViewModel
+            {
+                Products = _productService.GetAll()
+                    .Where(p => category == null || p.Category.Name == category)
+                    .Include("Category")
+                    .OrderBy(p => p.Id)
+                    .Skip((page - 1)*PageSize)
+                    .Take(PageSize)
+                    .ToList(),
+                PageInfo = new PageInfo
+                {
+                    CurrentPage = page,
+                    ItemsPerPage = PageSize,
+                    TotalItems = category == null ?
+                        _productService.GetAll().Count() :
+                        _productService.GetAll().Count(p => p.Category.Name == category)
+                },
+                CurrentCategory = category
+            };
+            
+            return View(model);
         }
 
         public ActionResult Details(int id)
@@ -47,6 +69,11 @@ namespace OnlineStore.Controllers
         [HttpPost]
         public ActionResult Create(Product model)
         {
+            if (string.IsNullOrEmpty(model.Name))
+            {
+                ModelState.AddModelError("Name", "Field name is required");
+            }
+
             if (ModelState.IsValid)
             {
                 _productService.Insert(model);
