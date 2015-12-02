@@ -18,7 +18,7 @@
         <div class="editor-label">
             @Html.LabelFor(model => model.Name)
             @Html.EditorFor(model => model.Name)
-            <!--Html.ValidationMessageFor(model => model.Name)-->
+            @Html.ValidationMessageFor(model => model.Name)
         </div>
         <div class="editor-field">
             @Html.LabelFor(model => model.Category.Name, "Category")
@@ -27,10 +27,11 @@
         <div class="editor-field">
             @Html.LabelFor(model => model.Price)
             @Html.EditorFor(model => model.Price)
+            @Html.ValidationMessageFor(model => model.Price)
         </div>
         <div class="editor-field">
-            @Html.LabelFor(model => model.Weight)
-            @Html.EditorFor(model => model.Weight)
+            @Html.LabelFor(model => model.Description)
+            @Html.EditorFor(model => model.Description)
         </div>
         <div class="editor-field">
             @Html.LabelFor(model => model.Discount)
