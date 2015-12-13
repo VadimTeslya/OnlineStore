@@ -1,0 +1,47 @@
+﻿@model OnlineStoreEntity.Product
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <legend>ProductModel</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Name)
+            @Html.EditorFor(model => model.Name)
+            @Html.ValidationMessageFor(model => model.Name)
+        </div>
+        <div class="editor-field">
+            @Html.LabelFor(model => model.Category)
+            @Html.DropDownListFor(model => model.CategoryId, ViewBag.Id as SelectList)
+        </div>
+        <div class="editor-field">
+            @Html.LabelFor(model => model.Price)
+            @Html.EditorFor(model => model.Price)
+            @Html.ValidationMessageFor(model => model.Price)
+        </div>
+        <div class="editor-field">
+            @Html.LabelFor(model => model.Description)
+            @Html.EditorFor(model => model.Description)
+        </div>
+        <div class="editor-field">
+            @Html.LabelFor(model => model.Discount)
+            @Html.EditorFor(model => model.Discount)
+        </div>
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
