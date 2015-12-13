@@ -6,6 +6,7 @@ using OnlineStoreEntity;
 
 namespace OnlineStore.Controllers
 {
+    [Authorize]
     public class AdminController : Controller
     {
         private IRepository<Product> _productService;
