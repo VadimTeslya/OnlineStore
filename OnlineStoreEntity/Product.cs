@@ -14,15 +14,19 @@ namespace OnlineStoreEntity
         [HiddenInput(DisplayValue = false)]
         public int Id { get; set; }
 
-        [Required(ErrorMessage = "Please enter a product name")]
+        [Required(ErrorMessage = "Field Name is required")]
         public string Name { get; set; }
 
+        [Required(ErrorMessage = "Field price is required")]
         public decimal Price { get; set; }
 
         [DataType(DataType.MultilineText)]
         public string Description { get; set; }
 
         public byte[] ProductPhoto { get; set; }
+
+        [HiddenInput(DisplayValue = false)]
+        public string PhotoMimeType { get; set; }
 
         public bool Discount { get; set; }
 
