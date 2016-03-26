@@ -4,10 +4,12 @@
     ViewBag.Title = "Products";
 }
 
-@foreach (var p in Model.Products)
-{
-    Html.RenderPartial("ProductSummary", p);
-}
+<div id="itemConteiner">
+    @foreach (var p in Model.Products)
+    {
+        Html.RenderPartial("ProductSummary", p);
+    }
+</div>
 
 <div class="pager">
     @Html.PageLinks(Model.PageInfo, x => Url.Action("Index",

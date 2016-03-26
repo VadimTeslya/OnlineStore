@@ -1,14 +1,22 @@
 ﻿@model OnlineStoreEntity.Product
 
 <div class="item">
-    <h3>@Model.Name</h3>
-    @Model.Description
+    <div>
+        <img width="150" height="150" src="@Url.Action("GetPhoto", "Product", new { Model.Id })" alt="Not found"/>
+    </div>
+
+    <div id="prodName">
+        
+        <h3>@Model.Name</h3>
+    </div>
+    <div id="prodPrice">
+        <h4>@Model.Price.ToString("c")</h4>
+    </div>
+
     @using (Html.BeginForm("AddToCart", "Cart"))
     {
         @Html.HiddenFor(p => p.Id)
         @Html.Hidden("returnUrl", Request.Url.PathAndQuery)
-        <input type="submit" value="+ Add to cart" />
+        <input type="submit" value="+ Add to cart"/>
     }
-
-    <h4>@Model.Price.ToString("c")</h4>
 </div>
