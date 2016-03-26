@@ -1,0 +1,47 @@
+﻿@using OnlineStore.HtmlHelpers;
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content2/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body style="padding-top: 70px;">
+    <nav class="navbar navbar-default navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("ONLINE STORE", "Index", new { area = "", controller = "Product" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    @Html.MenuItem("Home", "Index", "Admin")
+                    @Html.MenuItem("Product", "Product", "Admin")
+                    @Html.MenuItem("Category", "Category", "Admin")
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <div>
+            @if (TempData["message"] != null)
+            {
+                <div class="Message">@TempData["message"]</div>
+            }
+            @RenderBody()
+
+        </div>
+    </div>
+    @Scripts.Render("~/bundles/jquery",
+                    "~/bundles/bootstrap",
+                    "~/bundles/jqueryval",
+                    "~/bundles/CreateProduct")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

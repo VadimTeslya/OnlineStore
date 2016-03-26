@@ -1,102 +1,10 @@
-﻿html {
-    background-color: #e2e2e2;
-    margin: 0;
-    padding: 0;
-}
-
-body {
-    background-color: #fff;
-    border-top: solid 10px #000;
-    color: #333;
-    font-size: .85em;
-    font-family: "Segoe UI", Verdana, Helvetica, Sans-Serif;
-    margin: 0;
-    padding: 0;
-}
-
-a {
-    color: #333;
-    outline: none;
-    padding-left: 3px;
-    padding-right: 3px;
-    text-decoration: underline;
-}
-
-    a:link, a:visited,
-    a:active, a:hover {
-        color: #333;
-    }
-
-    a:hover {
-        background-color: #c7d1d6;
-    }
-
-header, footer, hgroup,
-nav, section {
-    display: block;
-}
-
-mark {
-    background-color: #a6dbed;
-    padding-left: 5px;
-    padding-right: 5px;
-}
-
-.float-left {
-    float: left;
-}
-
-.float-right {
-    float: right;
-}
-
-.clear-fix:after {
-    content: ".";
-    clear: both;
-    display: block;
-    height: 0;
-    visibility: hidden;
-}
-
-h1, h2, h3,
-h4, h5, h6 {
-    color: #000;
-    margin-bottom: 0;
-    padding-bottom: 0;
-}
-
-h1 {
-    font-size: 2em;
-}
-
-h2 {
-    font-size: 1.75em;
-}
-
-h3 {
-    font-size: 1.2em;
-}
-
-h4 {
-    font-size: 1.1em;
-}
-
-h5, h6 {
-    font-size: 1em;
-}
-
-    h5 a:link, h5 a:visited, h5 a:active {
-        padding: 0;
-        text-decoration: none;
-    }
-
-
-/*New _Layout
+﻿/*New _Layout
     -----------------------------------------------------------*/
 
-    BODY {
+    body {
         font-family: Cambria, Georgia, "Times New Roman";
         margin: 0;
+        min-height: 100%;
     }
 
     DIV#header DIV.title, DIV.item H3, DIV.item H4, DIV.pager A {
@@ -115,9 +23,14 @@ h5, h6 {
     }
 
     DIV#content {
+        height: auto;
         border-left: 2px solid gray;
         margin-left: 9em;
         padding: 1em;
+    }
+
+    DIV#itemConteiner {
+        height: auto;
     }
 
     DIV#categories {
@@ -127,31 +40,29 @@ h5, h6 {
     }
 
     DIV.item {
-        border-top: 1px dotted gray;
-        padding-top: .7em;
-        margin-bottom: .7em;
+        float: left;
+        width: 150px;
+        height: 255px;
+        margin: 0 10px 10px 0; 
+        border: 1px solid #000000;
     }
 
-    DIV.item:first-child {
-        border-top: none;
-        padding-top: 0;
-    }
-
-    DIV.item H3 {
+    DIV#prodName {
+        float: left;
         font-size: 1.3em;
-        margin: 0 0 .25em 0;
+        margin-left: 2px;
     }
 
-    DIV.item H4 {
+    DIV#prodPrice {
+        float: right;
         font-size: 1.1em;
-        margin: .4em 0 0 0;
+        margin-right: 2px;
     }
-
+    
     DIV.pager {
         text-align: right;
-        border-top: 2px solid silver;
         padding: .5em 0 0 0;
-        margin-top: 1em;
+        clear: both;
     }
 
     DIV.pager A {
@@ -170,40 +81,85 @@ h5, h6 {
       color: White;
     }
 
-    DIV#categories A
-{
-  font: bold 1.1em "Arial Narrow","Franklin Gothic Medium",Arial; display: block;
-  text-decoration: none; padding: .6em; color: Black;
-  border-bottom: 1px solid silver;
-}
-DIV#categories A.selected { background-color: #666; color: White; }
-DIV#categories A:hover { background-color: #CCC; }
-DIV#categories A.selected:hover { background-color: #666; }
+    DIV#categories A{
+      font: bold 1.1em "Arial Narrow","Franklin Gothic Medium",Arial; 
+      display: block;
+      text-decoration: none; 
+      padding: .6em; 
+      color: Black;
+      border: 1px solid silver;
+    }
+
+    DIV#categories A.selected {
+         background-color: #666; 
+         color: White;
+    }
+
+    DIV#categories A:hover {
+         background-color: #CCC;
+    }
+
+    DIV#categories A.selected:hover {
+         background-color: #666;
+    }
 
 /* Add to cart button
 ----------------------------------------------------------*/
-FORM { margin: 0; padding: 0; }
-DIV.item FORM { float:right; }
-DIV.item INPUT {
-  color:White; background-color: #333; border: 1px solid black; cursor:pointer;
-}
+    form {
+         margin: 0; 
+         padding: 0;
+    }
+
+    DIV.item form {
+         margin-left: auto;
+         margin-right: auto;
+         margin-bottom: 0;
+    }
+
+    DIV.item input {
+        width: 150px;
+        color:White; 
+        background-color: #333; 
+        border: 1px solid black; 
+        cursor:pointer;
+        margin-bottom: 0;
+    }
 
 /* Shopping Cart
 -----------------------------------------------------------*/
-H2 { margin-top: 0.3em }
-TFOOT TD { border-top: 1px dotted gray; font-weight: bold; }
-.actionButtons A, INPUT.actionButtons {
-  font: .8em Arial; color: White; margin: .5em;
-  text-decoration: none; padding: .15em 1.5em .2em 1.5em;
-  background-color: #353535; border: 1px solid black;
-}
+    H2 { margin-top: 0.3em }
+
+    TFOOT TD {
+         border-top: 1px dotted gray; 
+         font-weight: bold;
+    }
+    
+    .actionButtons A, INPUT.actionButtons {
+         font: .8em Arial; color: White; text-decoration: none; 
+         margin: .5em; padding: .15em 1.5em .2em 1.5em;
+         background-color: #353535; border: 1px solid black;
+    }
 
 /*Cart info in layout
 ------------------------------------------------------------*/
-DIV#cart { float:right; margin: .8em; color: Silver;
-  background-color: #555; padding: .5em .5em .5em 1em; }
-DIV#cart A { text-decoration: none; padding: .4em 1em .4em 1em; line-height:2.1em;
-  margin-left: .5em; background-color: #333; color:White; border: 1px solid black;}
+    DIV#cart { 
+        float:right; 
+        margin: .8em; 
+        color: Silver;
+        background-color: #555; 
+        padding: .5em .5em .5em 1em; 
+
+    }
+
+    DIV#cart A { 
+        text-decoration: none; 
+        padding: .4em 1em .4em 1em; 
+        line-height:2.1em;
+        margin-left: .5em; 
+        background-color: #333; 
+        color:White; 
+        border: 1px solid black;
+    }
 
 /* site title
 ----------------------------------------------------------*/

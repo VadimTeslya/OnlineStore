@@ -6,7 +6,7 @@ using System.Web.Optimization;
 using System.Web.Routing;
 using OnlineStore.Binders;
 using OnlineStore.Infrastructure;
-using OnlineStoreData.DbInitializer;
+using OnlineStoreData;
 using OnlineStoreEntity;
 
 namespace OnlineStore
@@ -17,13 +17,13 @@ namespace OnlineStore
         {
             AreaRegistration.RegisterAllAreas();
 
-            WebApiConfig.Register(GlobalConfiguration.Configuration);
+            GlobalConfiguration.Configure(WebApiConfig.Register);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
+            Database.SetInitializer(new DropCreateDatabaseIfModelChanges<DataContext>());
             DependencyConfigure.Initialize();
-            Database.SetInitializer(new DatabaseInitializer());
             ModelBinders.Binders.Add(typeof(Сart), new CartModelBinder());
         }
     }

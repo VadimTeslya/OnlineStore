@@ -7,6 +7,7 @@
     <link href="~/Content/Site.css" type="text/css" rel="stylesheet" />
 </head>
 <body>
+    <div>@Html.RouteLink("Administration", new { controller = "Admin", action = "Index", area = "Admin" })</div>
 <div id="header">
     @{ Html.RenderAction("Summary", "Cart"); }
     <div class="title">ONLINE STORE</div>

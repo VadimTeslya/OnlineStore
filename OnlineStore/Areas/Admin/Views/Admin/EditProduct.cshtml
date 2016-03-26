@@ -1,9 +1,8 @@
-﻿@using DotNetOpenAuth.Messaging
-@model OnlineStoreEntity.Product
+﻿@model OnlineStoreEntity.Product
 
 @{
     ViewBag.Title = "Admin: Edit " + @Model.Name;
-    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
 
 <h1>Edit @Model.Name</h1>
@@ -19,13 +18,13 @@
         }
         else
         {
-            <img width="150" height="150" src="@Url.Action("GetImage", "Product", new { Model.Id })" />
+            <img width="150" height="150" src="@Url.Action("GetPhoto", "Product", new { Model.Id, area = "" })" />
         }
         <div>
             Upload new image:
-            <input type="file" name="Image" />
+            <input type="file" name="photo" />
         </div>
     </div>
     <input type="submit" value="Save" />
-    @Html.ActionLink("Cancel and return to List", "Index")
+    @Html.ActionLink("Cancel and return to List", "Product")
 }
