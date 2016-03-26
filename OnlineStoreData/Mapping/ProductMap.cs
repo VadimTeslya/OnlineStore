@@ -18,7 +18,7 @@ namespace OnlineStoreData.Mapping
 
             Property(p => p.Name).IsRequired().HasMaxLength(100);
             Property(p => p.Price).HasColumnType("MONEY").IsRequired();
-            Property(p => p.ProductPhoto).HasColumnType("IMAGE");
+            Property(p => p.ProductPhoto).HasColumnType("varbinary(max)");
             Property(p => p.Description).HasColumnType("nvarchar(max)");
         }
     }
