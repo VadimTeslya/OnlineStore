@@ -1,0 +1,10 @@
+﻿body {
+    font-family: Segoe UI, Verdana;
+    padding: 0;
+}
+
+div#login{
+    width: 600px;
+    margin-left:auto;
+    margin-right:auto;
+}
