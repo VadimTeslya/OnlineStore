@@ -1,8 +1,6 @@
 ﻿using System.Web.Mvc;
 using Autofac;
-using OnlineStore.Infrastructure.Concrete;
 using OnlineStoreData;
-using OnlineStore.Infrastructure.Abstract;
 
 namespace OnlineStore.Infrastructure
 {
@@ -19,7 +17,6 @@ namespace OnlineStore.Infrastructure
 
             builder.RegisterAssemblyTypes(typeof(MvcApplication).Assembly).PropertiesAutowired();
             builder.RegisterGeneric(typeof(RepositoryService<>)).As(typeof(IRepository<>));
-            builder.RegisterType(typeof (FormsAuthProvider)).As(typeof (IAuthProvider));
             return builder.Build();
         }
     }
